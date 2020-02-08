@@ -3,7 +3,6 @@ import json
 from regression_model.config import config
 from regression_model.processing.data_management import load_dataset
 
-
 def test_prediction_endpoint_validation_200(flask_test_client):
     # Given
     # Load the test data from the regression_model package.
