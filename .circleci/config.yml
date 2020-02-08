@@ -42,7 +42,7 @@ jobs:
           name: Run tests
           command: |
             . venv/bin/activate
-            pytest -vv packages/regression_model/tests
+            py.test -vv packages/regression_model/tests
 
   test_ml_api:
     <<: *defaults
@@ -54,19 +54,11 @@ jobs:
       - run:
           name: Runnning tests
           command: |
-            python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
-            pytest -vv packages/ml_api/tests -m "not differential"
+            py.test -vv packages/ml_api/tests -m "not differential"
       - save_cache:
-          key: py-deps-{{ checksum "packages/ml_api/requirements.txt" }}
-          paths:
-            - "/venv"
-
-  train_and_upload_regression_model:
-    <<: *defaults
-    steps:
       - checkout
       - *prepare_venv
       - run: 
@@ -103,7 +95,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install -r packages/ml_api/requirements.txt
-            pytest -vv packages/ml_api/tests -m differential
+            py.test -vv packages/ml_api/tests -m differential
 
   section_10_deploy_to_heroku:
     <<: *defaults
