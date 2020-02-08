@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   docker:
     - image: circleci/python:3.6.8
-  working_directory: ~/deploying-machine-learning-models
+  working_directory: ~/project
 
 prepare_venv: &prepare_venv
   run:
