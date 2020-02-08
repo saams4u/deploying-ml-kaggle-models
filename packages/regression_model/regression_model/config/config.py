@@ -15,8 +15,8 @@ TRAINED_MODEL_DIR = PACKAGE_ROOT / 'trained_models'
 DATASET_DIR = PACKAGE_ROOT / 'datasets'
 
 # data
-TESTING_DATA_FILE = 'test.csv'
-TRAINING_DATA_FILE = 'train.csv'
+TESTING_DATA_FILE = DATASET_DIR / 'test.csv'
+TRAINING_DATA_FILE = DATASET_DIR / 'train.csv'
 TARGET = 'SalePrice'
 
 
