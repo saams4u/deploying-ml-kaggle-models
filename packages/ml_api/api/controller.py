@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from regression_model.predict import make_prediction
 from regression_model import __version__ as _version
-from neural_network_model.predict import make_single_prediction
+# from neural_network_model.predict import make_single_prediction
 import os
 from werkzeug.utils import secure_filename
 
@@ -11,9 +11,7 @@ from api import __version__ as api_version
 
 _logger = get_logger(logger_name=__name__)
 
-
 prediction_app = Blueprint('prediction_app', __name__)
-
 
 @prediction_app.route('/health', methods=['GET'])
 def health():

@@ -5,10 +5,8 @@ from marshmallow import ValidationError
 
 from api import config
 
-
 class InvalidInputError(Exception):
     """Invalid model input."""
-
 
 SYNTAX_ERROR_FIELD_MAP = {
     '1stFlrSF': 'FirstFlrSF',
