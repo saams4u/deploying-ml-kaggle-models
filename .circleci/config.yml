@@ -61,6 +61,8 @@ jobs:
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
             PYTHONPATH=./packages/regression_model
+            PYTHONPATH=./packages/ml_api/tests
+            PYTHONPATH=./packages/ml_api/tests/differential_tests 
             py.test -vv packages/ml_api/tests -m "not differential"
       - save_cache:
           key: py-deps-{{ checksum "packages/ml_api/requirements.txt" }}
