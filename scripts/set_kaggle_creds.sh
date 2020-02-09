@@ -1,0 +1,2 @@
+set KAGGLE_USERNAME=saams4u
+set KAGGLE_KEY=42e0cb595d2fed163ccf1d52f795f765

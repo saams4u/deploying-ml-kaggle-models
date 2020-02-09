@@ -11,7 +11,7 @@ from setuptools import find_packages, setup
 # Package meta-data.
 NAME = 'neural_network_model'
 DESCRIPTION = 'Train and deploy neural network model.'
-URL = 'https://github.com/saams4u/deploying-machine-learning-models
+URL = 'https://github.com/saams4u/deploying-machine-learning-models'
 EMAIL = 'mahjouri.saamahn@gmail.com'
 AUTHOR = 'Saamahn Mahjouri'
 REQUIRES_PYTHON = '>=3.6.0'
@@ -62,7 +62,7 @@ setup(
     url=URL,
     packages=find_packages(exclude=('tests',)),
     package_data={'neural_network_model': ['VERSION']},
-    install_requires=list_reqs(),
+    # install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
     license='MIT',
