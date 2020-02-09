@@ -51,6 +51,7 @@ jobs:
       - restore_cache:
           keys:
             - py-deps-{{ checksum "packages/ml_api/requirements.txt" }}
+      - *fetch_data
       - run:
           name: Runnning tests
           command: |
