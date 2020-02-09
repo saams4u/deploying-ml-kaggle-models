@@ -56,6 +56,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            pip install -r packages/regression_model/requirements.txt
             PYTHONPATH=./packages/regression_model python3 packages/regression_model/regression_model/train_pipeline.py
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
