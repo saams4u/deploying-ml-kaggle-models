@@ -12,6 +12,7 @@ prepare_venv: &prepare_venv
       python3 -m venv venv
       source venv/bin/activate
       pip install --upgrade pip
+
 fetch_data: &fetch_data
   run:
     name: Set script permissions and fetch data
@@ -19,6 +20,7 @@ fetch_data: &fetch_data
       source venv/bin/activate
       chmod +x ./scripts/fetch_kaggle_dataset.sh
       ./scripts/fetch_kaggle_dataset.sh
+
 jobs:
   test_regression_model:
     <<: *defaults
@@ -41,6 +43,7 @@ jobs:
           command: |
             . venv/bin/activate
             py.test -vv packages/regression_model/tests
+
   test_ml_api:
     <<: *defaults
     steps:
@@ -83,6 +86,7 @@ jobs:
             . venv/bin/activate
             chmod +x ./scripts/publish_model.sh
             ./scripts/publish_model.sh ./packages/regression_model/
+
   section_9_differential_tests:
     <<: *defaults
     steps:
@@ -100,6 +104,7 @@ jobs:
             . venv/bin/activate
             pip install -r packages/ml_api/requirements.txt
             py.test -vv packages/ml_api/tests -m differential
+
   section_10_deploy_to_heroku:
     <<: *defaults
     steps:
@@ -108,6 +113,7 @@ jobs:
           name: Deploy to Heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
   section_11_build_and_push_to_heroku_docker:
     <<: *defaults
     steps:
@@ -127,6 +133,7 @@ jobs:
           name: Release to Heroku
           command: |
             heroku container:release web --app $HEROKU_APP_NAME
+
   section_12_publish_docker_image_to_aws:
     <<: *defaults
     working_directory: ~/project/packages/ml_models
@@ -140,6 +147,7 @@ jobs:
             eval $(aws ecr get-login --no-include-email --region us-east-1)
             make build-ml-api-aws tag-ml-api push-ml-api-aws
             aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
+
   section_13_train_and_upload_neural_network_model:
     docker:
       - image: circleci/python:3.6.4-stretch
@@ -169,6 +177,7 @@ jobs:
             . venv/bin/activate
             chmod +x ./scripts/publish_model.sh
             ./scripts/publish_model.sh ./packages/neural_network_model/
+
 workflows:
   version: 2
   test-all:
