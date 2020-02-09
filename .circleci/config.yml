@@ -60,7 +60,7 @@ jobs:
             pip install -r packages/regression_model/requirements.txt
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
-            PYTHONPATH=./packages/ml_api python3 packages/ml_api/tests/capture_model_predictions.py
+            pip install regression-model==1.0.0
             py.test -vv packages/ml_api/tests -m "not differential"
       - save_cache:
           key: py-deps-{{ checksum "packages/ml_api/requirements.txt" }}
