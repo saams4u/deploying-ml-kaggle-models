@@ -6,5 +6,14 @@ flask==1.0.2
 # schema validation
 marshmallow==2.17.0
 
+# production requirements
+numpy==1.15.4
+scikit-learn==0.20.2
+pandas==0.23.4
+
+# packaging
+setuptools==40.6.3
+wheel==0.32.3
+
 # Set this to the previous model version
 regression-model==1.0.0

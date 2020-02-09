@@ -11,7 +11,6 @@ from regression_model.processing.data_management import load_dataset
 
 from api import config
 
-
 def capture_predictions() -> None:
     """Save the test data predictions to a CSV."""
 
