@@ -54,6 +54,8 @@ jobs:
       - run:
           name: Runnning tests
           command: |
+            python3 -m venv venv
+            source venv/bin/activate
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
