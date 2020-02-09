@@ -54,16 +54,10 @@ jobs:
       - run:
           name: Runnning tests
           command: |
-            python3 -m venv env
-            source env/bin/activate
-            . env/bin/activate
-            pip install -r packages/regression_model/requirements.txt
-            chmod +x ./scripts/fetch_kaggle_dataset.sh
-            ./scripts/fetch_kaggle_dataset.sh
+            . venv/bin/activate
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
-            pip install -r packages/ml_api/diff_test_requirements.txt
-            py.test -vv packages/ml_api/tests
+            py.test -vv packages/ml_api/tests -m "not differential"
       # - save_cache:
       - checkout
       - *prepare_venv
