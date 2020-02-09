@@ -62,7 +62,7 @@ jobs:
             pip install pandas
             pip install kaggle
             chmod +x ./scripts/fetch_kaggle_dataset.sh
-            sh ./scripts/fetch_kaggle_dataset.sh
+            ./scripts/fetch_kaggle_dataset.sh
             PYTHONPATH=./packages/regression_model python3 packages/regression_model/regression_model/train_pipeline.py
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
