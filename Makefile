@@ -1,6 +1,7 @@
 NAME=kaggle-ml-api
 COMMIT_ID=$(shell git rev-parse HEAD)
-
+PIP_EXTRA_INDEX_URL=https://XB6vk7AnmZbR7F5i7uBx@pypi.fury.io/saams4u/
+HEROKU_APP_NAME=kaggle-ml-api
 
 build-ml-api-heroku:
 	docker build --build-arg PIP_EXTRA_INDEX_URL=${PIP_EXTRA_INDEX_URL} -t registry.heroku.com/$(NAME)/web:$(COMMIT_ID) .
