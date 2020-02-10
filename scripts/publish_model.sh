@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Building packages and uploading them to a Gemfury repository
-
-GEMFURY_URL=$GEMFURY_PUSH_URL
+# GEMFURY_URL=$GEMFURY_PUSH_URL
+GEMFURY_URL=https://XB6vk7AnmZbR7F5i7uBx@pypi.fury.io/saams4u/
 
 set -e
 
