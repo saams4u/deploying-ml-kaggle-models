@@ -117,9 +117,6 @@ jobs:
           name: Deploy to Heroku
           command: |
             python .scripts/constants.py
-            chmod +x ./scripts/fetch_kaggle_dataset.sh
-            ./scripts/fetch_kaggle_dataset.sh
-            PYTHONPATH=./packages/ml_api:./packages/regression_model:./packages/ml_api/tests:./packages/ml_api/tests/differential_tests python3 packages/regression_model/regression_model/train_pipeline.py
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
             # git push https://heroku:572781ae-5436-4fc3-8000-c3d4cbd3bced@git.heroku.com/kaggle-ml-api.git master
 
