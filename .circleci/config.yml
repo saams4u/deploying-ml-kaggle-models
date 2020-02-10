@@ -118,39 +118,39 @@ jobs:
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
-  section_11_build_and_push_to_heroku_docker:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run: docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
-      - run:
-          name: Setup Heroku CLI
-          command: |
-            wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - run: 
-          name: Build and Push Image
-          command: |
-            make build-ml-api-heroku push-ml-api-heroku
-      - run: 
-          name: Release to Heroku
-          command: |
-            heroku container:release web --app $HEROKU_APP_NAME
+  # section_11_build_and_push_to_heroku_docker:
+  #   <<: *defaults
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker:
+  #         docker_layer_caching: true
+  #     - run: docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
+  #     - run:
+  #         name: Setup Heroku CLI
+  #         command: |
+  #           wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  #     - run: 
+  #         name: Build and Push Image
+  #         command: |
+  #           make build-ml-api-heroku push-ml-api-heroku
+  #     - run: 
+  #         name: Release to Heroku
+  #         command: |
+  #           heroku container:release web --app $HEROKU_APP_NAME
 
-  section_12_publish_docker_image_to_aws:
-    <<: *defaults
-    working_directory: ~/project/packages/ml_models
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Publishing docker image to aws ECR
-          command: |
-            sudo pip install awscli
-            eval $(aws ecr get-login --no-include-email --region us-east-1)
-            make build-ml-api-aws tag-ml-api push-ml-api-aws
-            aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
+  # section_12_publish_docker_image_to_aws:
+  #   <<: *defaults
+  #   working_directory: ~/project/packages/ml_models
+  #   steps:
+  #     - checkout
+  #     - setup_remote_docker
+  #     - run:
+  #         name: Publishing docker image to aws ECR
+  #         command: |
+  #           sudo pip install awscli
+  #           eval $(aws ecr get-login --no-include-email --region us-east-1)
+  #           make build-ml-api-aws tag-ml-api push-ml-api-aws
+  #           aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
 
   section_13_train_and_upload_neural_network_model:
     docker:
@@ -206,13 +206,13 @@ workflows:
       #       branches:
       #         only:
       #           - master
-      - section_11_build_and_push_to_heroku_docker:
-          requires:
-            - train_and_upload_regression_model
-          filters:
-            branches:
-              only:
-                - master
+      # - section_11_build_and_push_to_heroku_docker:
+      #     requires:
+      #       - train_and_upload_regression_model
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       # - section_12_publish_docker_image_to_aws:
       #     requires:
       #       - train_and_upload_regression_model
