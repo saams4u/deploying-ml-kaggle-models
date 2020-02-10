@@ -118,7 +118,6 @@ jobs:
           command: |
             python .scripts/constants.py
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-            # git push https://heroku:572781ae-5436-4fc3-8000-c3d4cbd3bced@git.heroku.com/kaggle-ml-api.git master
 
   section_11_build_and_push_to_heroku_docker:
     <<: *defaults
@@ -129,7 +128,6 @@ jobs:
       - command: |
           python .scripts/constants.py
       - run: docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
-      # - run: docker login --username=mahjouri.saamahn@gmail.com --password=572781ae-5436-4fc3-8000-c3d4cbd3bced registry.heroku.com
       - run:
           name: Setup Heroku CLI
           command: |
