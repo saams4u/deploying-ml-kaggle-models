@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath packages/ml_api:./packages/regression_model:./packages/ml_api/tests:./packages/ml_api/tests/differential_tests --access-logfile - --error-logfile - run:application
+web: gunicorn --pythonpath packages/ml_api --access-logfile - --error-logfile - run:application
