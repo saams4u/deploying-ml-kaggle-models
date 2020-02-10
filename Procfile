@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath packages/ml_api packages/regression_model --access-logfile - --error-logfile - run:application
+web: gunicorn --pythonpath packages/regression_model --access-logfile - --error-logfile - run:application
