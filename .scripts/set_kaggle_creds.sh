@@ -1,2 +1,2 @@
-set KAGGLE_USERNAME=saams4u
-set KAGGLE_KEY=572781ae-5436-4fc3-8000-c3d4cbd3bced
+export KAGGLE_USERNAME=saams4u
+export KAGGLE_KEY=bb3a016e561559f4de1cd0162b7eff18

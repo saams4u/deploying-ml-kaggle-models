@@ -18,6 +18,7 @@ fetch_data: &fetch_data
     name: Set script permissions and fetch data
     command: |
       source venv/bin/activate
+      sh .scripts/set_kaggle_creds.sh 
       chmod +x ./scripts/fetch_kaggle_dataset.sh
       ./scripts/fetch_kaggle_dataset.sh
 
@@ -58,6 +59,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
+            sh .scripts/set_kaggle_creds.sh
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
             PYTHONPATH=./packages/ml_api:./packages/regression_model:./packages/ml_api/tests:./packages/ml_api/tests/differential_tests python3 packages/regression_model/regression_model/train_pipeline.py pytest -vv packages/ml_api/tests -m "not differential"
@@ -99,6 +101,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install -r packages/ml_api/diff_test_requirements.txt
+            sh .scripts/set_kaggle_creds.sh
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
             PYTHONPATH=./packages/ml_api:./packages/regression_model:./packages/ml_api/tests:./packages/ml_api/tests/differential_tests python3 packages/regression_model/regression_model/train_pipeline.py python3 packages/ml_api/tests/capture_model_predictions.py
