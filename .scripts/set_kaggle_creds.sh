@@ -1,2 +1,0 @@
-export KAGGLE_USERNAME=saams4u
-export KAGGLE_KEY=42040e77568fd9ae1e3095a7ad4f8c17
